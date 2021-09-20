@@ -25,9 +25,9 @@ autorefresh_option=True
 enable_mixins_details=True
 
 # URLs to networks other than the one we are on:
-mainnet_url='https://oxen.observer'
-testnet_url='https://testnet.oxen.observer'
-devnet_url='https://devnet.oxen.observer'
+mainnet_url='https://block.lozzax.xyz'
+testnet_url='https://testnet.lozzax.xyz'
+devnet_url='https://devnet.lozzax.xyz'
 
 # Same as above, but these apply if we are on a .loki URL:
 lokinet_mainnet_url='http://blocks.loki'

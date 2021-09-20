@@ -1,6 +1,6 @@
-# Oxen Observer OMG block explorer
+# Lozzax Observer OMG block explorer
 
-Block explorer using Oxen 8+ LMQ RPC interface that does everything through RPC requests.  Sexy,
+Lozzax block explorer using Oxen (fork from oxen observer) 8+ LMQ RPC interface that does everything through RPC requests.  Sexy,
 awesome, safe.
 
 ## Prerequisite packages 
@@ -47,34 +47,34 @@ in `/etc/uwsgi-emperor/emperor.ini` add configuration of:
     cap = setgid,setuid
     emperor-tyrant = true
 
-Create a "vassal" config for loki-observer, `/etc/uwsgi-emperor/vassals/loki-observer.ini`, containing:
+Create a "vassal" config for lozzax-observer, `/etc/uwsgi-emperor/vassals/lozzax-observer.ini`, containing:
 
     [uwsgi]
-    chdir = /path/to/loki-observer
+    chdir = /path/to/lozzax-observer
     socket = mainnet.wsgi
     plugins = python3,logfile
     processes = 4
     manage-script-name = true
     mount = /=mainnet:app
 
-    logger = file:logfile=/path/to/loki-observer/mainnet.log
+    logger = file:logfile=/path/to/lozzax-observer/mainnet.log
 
 Set ownership of this user to whatever use you want it to run as, and set the group to `_loki` (so
 that it can open the oxend unix socket):
 
-    chown MYUSERNAME:_loki /etc/uwsgi-emperor/vassals/loki-observer.ini
+    chown MYUSERNAME:_loki /etc/uwsgi-emperor/vassals/lozzax-observer.ini
 
 In the loki-observer/mainnet.py, set:
 
-    config.oxend_rpc = 'ipc:///var/lib/loki/oxend.sock'
+    config.oxend_rpc = 'ipc:///var/lib/lozzax/lozzaxd.sock'
 
 and finally, proxy requests from the webserver to the wsgi socket.  For Apache I do this with:
 
     # Allow access to static files (e.g. .css and .js):
-    <Directory /path/to/loki-observer/static>
+    <Directory /path/to/lozzax-observer/static>
         Require all granted
     </Directory>
-    DocumentRoot /home/jagerman/src/loki-observer/static
+    DocumentRoot /home/jagerman/src/lozzax-observer/static
 
     # Proxy everything else via the uwsgi socket:
     ProxyPassMatch "^/[^/]*\.(?:css|js)(?:$|\?)" !

@@ -166,9 +166,9 @@ This tx does not includes a vote from this testing service node (only 7 votes ar
             <p><label>Unlock signature:</label> {{unlock_signature}}</p> {# FIXME #}
         {% elif tx.info.type == 4 and 'lns' in tx.extra %}
             {% if 'buy' in tx.extra.lns %}
-                <h2>🎫 Oxen Name Service Registration</h2>
+                <h2>🎫 Lozzax Name Service Registration</h2>
             {% elif 'update' in tx.extra.lns %}
-                <h2>💾 Oxen Name Service Update</h2>
+                <h2>💾 Lozzax Name Service Update</h2>
             {% endif %}
             {#FIXME - show some metadata?#}
         {% elif 'sn_registration' in tx.extra %}
@@ -215,7 +215,7 @@ This tx does not includes a vote from this testing service node (only 7 votes ar
     {%if tx.info.vout%}
         <h2>Outputs</h2>
         <h4 class="Subtitle">{{tx.info.vout|length}} output(s) for total of
-            {{tx.info.vout | sum(attribute='amount') | oxen(zero='<span title="Regular LOKI tx amounts are private">???</span>') | safe}}</h4>
+            {{tx.info.vout | sum(attribute='amount') | oxen(zero='<span title="Regular LZX tx amounts are private">???</span>') | safe}}</h4>
         <div class="TitleDivider"></div>
         <div class="tx-outputs">
             <table class="Table">
@@ -260,7 +260,7 @@ This tx does not includes a vote from this testing service node (only 7 votes ar
                     </p>
                     <form action="/myoutputs" method="post" style="width:100%; margin-top:2px" class="style-1">
                         <input type="hidden" name="tx_hash" value="{{tx_hash}}"><br/>
-                        <input type="text" name="lok_address" size="110" placeholder="Loki Address/Subaddress"><br/>
+                        <input type="text" name="lok_address" size="110" placeholder="Lozzax Address/Subaddress"><br/>
                         <input type="text" name="viewkey" size="110" placeholder="Private Viewkey" style="margin-top:5px"><br/>
                         <input type="hidden" name="raw_tx_data" value="{{raw_tx_data}}">
                         <!--above raw_tx_data field only used when checking raw tx data through tx pusher-->
@@ -284,7 +284,7 @@ This tx does not includes a vote from this testing service node (only 7 votes ar
                     <p style="margin: 0px">Prove to someone that you have sent them Loki in this transaction</p>
                     <p style="margin: 0px">
                         TX private key can be obtained using <i>get_tx_key</i>
-                        command in  <i>oxen-wallet-cli</i> command line tool
+                        command in  <i>lozzax-wallet-cli</i> command line tool
                         <br/>
                         {%if enable_js%}
                             Note: Address/Subaddress and TX private key are NOT sent to the server, as the calculations are done on the client side
@@ -297,7 +297,7 @@ This tx does not includes a vote from this testing service node (only 7 votes ar
                        <input type="text" name="txprvkey" size="120" placeholder="TX Private Key"><br/>
                         <input type="hidden" name="raw_tx_data" value="{{raw_tx_data}}">
                         <!--above raw_tx_data field only used when checking raw tx data through tx pusher-->
-                       <input type="text" name="lokaddress" size="120" placeholder="Recipient's Loki Address/Subaddress" style="margin-top:5px"><br/>
+                       <input type="text" name="lokaddress" size="120" placeholder="Recipient's Lozzax Address/Subaddress" style="margin-top:5px"><br/>
 
                         {%if enable_js%}
                             <!-- if have js, DONOT submit the form to server.
